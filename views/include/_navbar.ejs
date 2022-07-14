@@ -1,0 +1,30 @@
+<div class="topnav" id="myTopnav">
+    <a href="/" class="active">E12</a>
+    <a href="/questions">MEQ / Questions</a>
+    <a href="/calc">Calculator</a>
+    <div class="dropdown">
+      <button class="dropbtn">Resources 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Physics</a>
+        <a href="#">Chemistry</a>
+        <a href="#">Biology</a>
+      </div>
+    </div> 
+    <a href="#about">About</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+  
+
+  
+  <script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+  </script>

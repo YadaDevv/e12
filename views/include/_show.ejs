@@ -1,0 +1,14 @@
+<% for(var i=0; i < subjects.length; i++ ) { %>
+<tr>
+    <td><%= i + 1 %> </td>
+    <td id="subjectName"><%= subjects[i].name %> </td>
+    <td><%= subjects[i].teacher %> </td>   
+    <td><%= subjects[i].chapters %> </td>
+    <td><a href="/subject?name=<%= subjects[i].name %> " class="btn border-shadow update">
+        <span class="text-gradient"><i class="fa-solid fa-eye"></i></i></span>
+    </a></td>
+</tr>
+
+<% } %> 
+
+<%= console.log(`Subjects Loaded...`); %> 

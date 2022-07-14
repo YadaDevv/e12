@@ -1,0 +1,40 @@
+
+<%- include('include/_header.ejs', {title: 'Questions'}) %> 
+<body>
+    
+<%- include('include/_navbar.ejs') %> 
+
+
+
+<main id="site-main">
+    <div class="container">
+        <!-- form handling-->
+        <h2>Questions</h2> <br> <hr>
+        <form action="/" method="post">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>Type</th>
+                        <th>Files</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Biology</td>
+                        <td>MEQ / Questions</td>
+                        <td>PDF, Images</td>
+                        <td><a href="#" class="btn border-shadow update">
+                            <span class="text-gradient"><i class="fa-solid fa-eye"></i></i></span>
+                        </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>  
+</main>
+
+<%- include('include/_footer.ejs') %> 

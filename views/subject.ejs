@@ -1,0 +1,130 @@
+<%- include('include/_header.ejs', {title: 'Lessons'}) %>
+
+<style>
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <%- include('include/_navbar.ejs') %>
+
+  <main id="site-main">
+    <div class="container">
+      <div class="box-nav d-flex justify-between">
+        <a href="/" class="border-shadow">
+          <span class="text-gradient">Classes</span>
+        </a>
+      </div>
+      <!-- form handling-->
+      <form onsubmit=" return false;">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Chapter</th>
+              <th>Length</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- include('include/_showlesson.ejs') %>
+            <div id="myModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <iframe 
+                  id="ytd"
+                  width="95%"
+                  height="95%"
+                  src=""
+                  modestbranding="0"
+                  controls="0"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    function changeSrc(obj) {
+      if (obj.href != "http://localhost:3000/subject?enablejsapi=1") {
+        //console.log(obj.href);
+        document.getElementById("ytd").src = obj.href;
+        modal.style.display = "block";
+        return false;
+      }
+      return false;
+    }
+
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+      modal.style.display = "none";
+      //console.log("wdw");
+      document
+        .getElementById("ytd")
+        .contentWindow.postMessage(
+          '{"event":"command","func":"stopVideo","args":""}',
+          "*"
+        );
+    };
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        document
+          .getElementById("ytd")
+          .contentWindow.postMessage(
+            '{"event":"command","func":"stopVideo","args":""}',
+            "*"
+          );
+      }
+    };
+  </script>
+
+  <%- include('include/_footer.ejs') %>
+</body>
