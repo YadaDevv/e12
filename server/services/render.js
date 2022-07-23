@@ -1,7 +1,7 @@
-const axios = require('axios')
+const axios = require('../helpers/axios')
 
 exports.homeRoute = (req, res) => {
-    axios.get('http://localhost:3000/api/subjects')
+    axios.get('/api/subjects')
     .then(function(response){
         res.render('index', {subjects: response.data})
     })
@@ -11,15 +11,24 @@ exports.homeRoute = (req, res) => {
 }
 
 exports.subject = (req, res) => {
-    axios.get('http://localhost:3000/api/lessons', {params : {id: req.query.id}})
+    axios.get('/api/lessons', {params : {id: req.query.id}})
     .then(function(response){
         res.render('subject', {lessons: response.data, lessonName : req.query.name})
     })
 }
 
-exports.questions = (req, res) => {
-    axios.get('http://localhost:3000/api/images', {params : {id: req.query.id}})
-    .then(function(response){
-        res.render('questions', {images: response.data, imageName : req.query.name})
-    })
+exports.questions = async(req, res) => {
+   try {
+   const getImage = axios.get('/api/images', {params : {id: req.query.id}})
+   const getLessons = axios.get('/api/lessons', {params : {id: req.query.id}})
+
+   const [images, lessons] =  await Promise.all([getImage, getLessons])
+
+   console.log('images', images.data)
+   console.log('lessons', lessons.data)
+    
+   res.render('questions', {images: images.data, lessons: lessons.data,imageName : req.query.name})
+   } catch (error) {
+        res.render('questions', {error: 'Not found'})
+   }
 }

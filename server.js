@@ -1,12 +1,11 @@
+require('dotenv').config( {path: 'config.env'} )
 const express = require('express')
 const app = express()
-const dotenv = require('dotenv')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const path = require('path')
 const connectDB = require('./server/database/connection')
 
-dotenv.config( {path: 'config.env'} )
 
 const PORT = process.env.PORT || 8080;
 
