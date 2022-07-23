@@ -31,4 +31,4 @@ exports.questions = async(req, res) => {
    } catch (error) {
         res.render('questions', {error: 'Not found'})
    }
-}
+} 
