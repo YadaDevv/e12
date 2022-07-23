@@ -9,8 +9,6 @@ for (let i = 0; i < copy.length; i++) {
     links.push(copy[i].link);
   }
 }
-//console.log(filtered);
-//console.log(`Lessons Loaded Subject --> (${lessonName})`);
 
 if (filtered.length === 0) {
   filtered.push({'_id:' : "0",
@@ -19,7 +17,7 @@ if (filtered.length === 0) {
      'length' : "0",
       'link' : "",
        'subject' : `${lessonName}`});
-  //console.log("empty");
+
 }
 
 for(var i=0; i < filtered.length; i++ ) { %>
@@ -36,9 +34,6 @@ for(var i=0; i < filtered.length; i++ ) { %>
       class="btn border-shadow update ">
       <span class="text-gradient"><i class="fa-solid fa-eye"></i></i></span>
     </a>
-
-
-    <!-- Modal content -->
 
 
   </td>

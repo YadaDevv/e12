@@ -18,5 +18,8 @@ exports.subject = (req, res) => {
 }
 
 exports.questions = (req, res) => {
-    res.render('questions')
+    axios.get('http://localhost:3000/api/images', {params : {id: req.query.id}})
+    .then(function(response){
+        res.render('questions', {images: response.data, imageName : req.query.name})
+    })
 }

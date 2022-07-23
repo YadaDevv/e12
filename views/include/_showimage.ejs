@@ -1,0 +1,23 @@
+<% 
+let questions = [...images]
+const filtered = [];
+
+for (let i = 0; i < questions.length; i++) {
+  if (questions[i].subject === lessonName) {
+    filtered.push(copy[i]);
+    links.push(copy[i].link);
+  }
+}
+for (let i = 0; i < images.length; i++) {
+    const element = images[i]; %>
+<img id="imgs" height="400" width="200" src="img/subjects/<%= images[i].subject %>/<%= images[i].name %>.jpg"
+            alt="questions">
+    <div id="myModal2" class="modal2">
+        <span class="close2">&times;</span>
+        <img class="modal-content2" id="img01">
+        <div id="caption2"></div>
+    </div>
+
+
+
+<% } %>
